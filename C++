@@ -1,0 +1,165 @@
+#include<iostream>
+using namespace std;
+const int size=150;
+
+class Blood_Bank
+{
+protected:
+int Blood_bank_ID;
+char Blood_bank_name[size];
+char blood_bank_address[size];
+long int blood_bank_phonenumber;
+char blood_bank_emailid[size];
+
+char person_name[size];
+int person_phone_number, person_id;
+double person_height,person_weight,person_haemo;
+char person_gender[size];
+char person_blood_group[size];
+
+public:
+Blood_Bank()
+{
+cout << "Enter Blood Bank name" << endl;
+cin.getline(Blood_bank_name,size);
+cout << "Enter Blood Bank ID" << endl;
+
+cin>>Blood_bank_ID;
+cout << "Enter Blood Bank Address" << endl;
+cin.getline(blood_bank_address,size);
+cout<<"Enter Blood Bank phone number"<<endl;
+cin>>blood_bank_phonenumber;
+cout<<"Enter Blood Bank email id"<<endl;
+cin.getline(blood_bank_emailid,size);
+}
+void set_blood_bank()
+{
+cout<<"\n\t\t===========================================";
+cout<<"\n\t\t| Blood Bank Details |"<<endl;
+cout<<"\t\t===========================================";
+cout<<" "<<Blood_bank_name[size]<<" "<<endl;
+cout<<" "<<Blood_bank_ID<<" "<<endl;
+cout<<" "<<blood_bank_address[size]<<" "<<endl;
+cout<<" "<<blood_bank_phonenumber<<" "<<endl;
+cout<<" "<<blood_bank_emailid[size]<<" "<<endl;
+}
+void create_Blood_Bank()
+{
+cout<<"Enter the name of the person:"<<endl;
+cin.getline(person_name,size);
+cout<<"enter phone number of the person"<<endl;
+cin>>person_phone_number;
+
+cout<<"enter person id:"<<endl;
+cin>>person_id;
+cout<<"enter person height:"<<endl;
+cin>>person_height;
+cout<<"enter person weight:"<<endl;
+cin>>person_weight;
+cout<<"enter person sex:"<<endl;
+cin.getline(person_gender,size);
+cout<<"enter person blood group:"<<endl;
+cin.getline(person_blood_group,size);
+cout<<"enter person haemoglobin unit:"<<endl;
+cin>>person_haemo;
+}
+};
+
+class Patient :public Blood_Bank
+{
+protected:
+public:
+
+void display_patient_details()
+{
+create_Blood_Bank();
+cout<<"\n\t\t===========================================";
+cout<<"\n\t\t| Patient Details |"<<endl;
+
+cout<<"\t\t===========================================";
+cout<<" the name of the person:"<<person_name<<endl;
+cout<<" phone number of the person"<<person_phone_number<<endl;
+cout<<" person id:"<<person_id<<endl;
+cout<<" person height:"<<person_height<<endl;
+cout<<" person weight:"<<person_weight<<endl;
+cout<<" person gender:"<<person_gender<<endl;
+cout<<" person blood group:"<<person_blood_group<<endl;
+cout<<" person haemoglobin unit:"<<person_haemo<<endl;
+// void delete_patient();
+}
+};
+
+class Donor: public Blood_Bank
+{
+protected:
+public:
+
+void display_donor_details()
+{
+create_Blood_Bank();
+cout<<"\n\t\t===========================================";
+cout<<"\n\t\t| Donor Details |"<<endl;
+cout<<"\t\t===========================================";
+cout<<" the name of the person:"<<person_name<<endl;
+
+cout<<" phone number of the person"<<person_phone_number<<endl;
+cout<<" person id:"<<person_id<<endl;
+cout<<" person height:"<<person_height<<endl;
+cout<<" person weight:"<<person_weight<<endl;
+cout<<" person gender:"<<person_gender<<endl;
+cout<<" person blood group:"<<person_blood_group<<endl;
+cout<<" person haemoglobin unit:"<<person_haemo<<endl;
+}
+// void delete_donor();
+
+};
+
+/*void patient::delete_donor()
+{
+
+}*/
+class Blood_check:public Blood_Bank
+{
+public:
+Blood_check()
+{
+if(person_gender[size]=='M')
+{
+if(person_haemo<=16.6)
+cout<<"blood valid to store in blood stock"<<endl;
+
+else
+cout<<"blood invalid"<<endl;
+}
+else if(person_gender[size]=='F')
+{
+if(person_haemo<=15)
+cout<<"blood valid to store in blood stock"<<endl;
+else
+cout<<"blood invalid"<<endl;
+}
+}
+};
+/*class Blood_stock : public Patient, public Donor//to store all blood details
+{
+protected:
+public:
+};*/
+
+/*class Blood_find()//to find if blood available
+{
+friend class Blood_stock
+};*/
+
+int main()
+
+{
+Blood_Bank b;
+Patient p;
+p.create_Blood_Bank();
+p.display_patient_details();
+Donor d;
+d.create_Blood_Bank();
+d.display_donor_details();
+Blood_check c;
+}
